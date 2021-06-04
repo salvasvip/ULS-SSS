@@ -1,0 +1,6 @@
+cambiar icono de vidas
+agregar escenas: intro, game over, win
+botellas de oxigeno
+cerrar ventanas
+cerrar puertas
+splash
