@@ -8,7 +8,7 @@ public class OxygenCountDown : MonoBehaviour
 {
     public float totalTime;
 
-    public Text text;
+    public Text TextOxigeno;
 
     private float minutes;
 
@@ -24,12 +24,11 @@ public class OxygenCountDown : MonoBehaviour
     void Update()
     {
         totalTime -= Time.deltaTime;
-        // minutes = (int) (totalTime / 60);
         seconds = (int) (totalTime % 60);
-        text.text = seconds.ToString();
+        TextOxigeno.text = seconds.ToString();
         if (totalTime<=0)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(4);
         }
     }
 }

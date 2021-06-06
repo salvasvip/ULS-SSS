@@ -8,7 +8,7 @@ public class CountDown : MonoBehaviour
 {
     public float totalTime;
 
-    public Text text;
+    public Text TextCuentaRegresiva;
 
     private float minutes;
 
@@ -26,10 +26,10 @@ public class CountDown : MonoBehaviour
         totalTime -= Time.deltaTime;
         minutes = (int) (totalTime / 60);
         seconds = (int) (totalTime % 60);
-        text.text = minutes.ToString() + " : " + seconds.ToString();
+        TextCuentaRegresiva.text = minutes.ToString() + " : " + seconds.ToString();
         if (totalTime<=0)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(4);
         }
     }
 }

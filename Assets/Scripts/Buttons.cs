@@ -18,23 +18,34 @@ public class Buttons : MonoBehaviour
     }
     public void Menu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         
     }    
-    public void Laberinto()
-    {
-        SceneManager.LoadScene(1);
-        
-    }
-    public void Jugar()
-    {
-        SceneManager.LoadScene(1);
-        
-    }
     public void Instrucciones()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(2);
 
+    }
+    public void LevelEasy()
+    {
+        SceneManager.LoadScene(3);
+        
+    }
+
+    public void Lose()
+    {
+        SceneManager.LoadScene(4);
+        
+    }
+    public void Win()
+    {
+        SceneManager.LoadScene(5);
+        
+    }
+    public void Credits()
+    {
+        SceneManager.LoadScene(6);
+        
     }
     public void Salir()
     {
