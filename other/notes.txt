@@ -1,2 +1,4 @@
-cerrar ventanas
-cerrar puertas
+puzzle para cerrar ventanas
+mostrar ventanas cerradas
+encerrar aliens
+victoria al completar todo
