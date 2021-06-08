@@ -34,7 +34,7 @@ public class LiveCharacter : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(5);
         }
     }
 }

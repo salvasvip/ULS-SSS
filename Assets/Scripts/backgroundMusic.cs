@@ -16,13 +16,12 @@ public class backgroundMusic : MonoBehaviour
         if (objs.Length > 1)
         {
             Destroy(this.gameObject);
-             
         }
         // DontDestroyOnLoad(this.gameObject);
     }
     void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
-        if (scene.buildIndex == 3)
+        if (scene.buildIndex == 4)
         {
             Destroy(music);
         }

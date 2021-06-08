@@ -46,7 +46,7 @@ public class OxygenRecharge : MonoBehaviour
         Color CilindroOxigenoColor = new Color(.5f,.1f,.1f,.5f);
         CylinderOxigenoRenderer.material.SetColor("_Color",CilindroOxigenoColor);
         OxygenRemainingTime.totalTime = 60;
-        TextMensajesText.text = "60 segundos mas de oxigeno";
+        TextMensajesText.text = "tanque de oxigeno recargado";
         TextMensajesObject.SetActive(true);
         StartCoroutine("TimeToMessage");
         // Destroy(gameObject,5);
