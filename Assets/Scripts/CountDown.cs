@@ -7,23 +7,12 @@ using UnityEngine.SceneManagement;
 public class CountDown : MonoBehaviour
 {
     public float totalTime;
-
     public Text TextCuentaRegresiva;
-
     private float minutes;
-
     private float seconds;
-
     private string secondsText;
     private string minutesText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         totalTime -= Time.deltaTime;
@@ -33,7 +22,6 @@ public class CountDown : MonoBehaviour
         if (seconds < 10)
         {
             secondsText = "0" + seconds.ToString();
-
         }
         else
         {

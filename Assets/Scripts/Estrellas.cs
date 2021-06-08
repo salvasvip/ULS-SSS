@@ -13,10 +13,9 @@ public class Estrellas : MonoBehaviour
 
     void Start()
     {
-       
-        // Debug.LogWarning("Box shape Particle System types are not currently supported!,neither are custom meshes or cones");
-        StarEmiter.loop = true;
+        StarEmiter = GetComponent<ParticleSystem>();
         var mainModule = StarEmiter.main;
+        mainModule.loop = true;
         mainModule.prewarm = true;
         mainModule.startSpeed = 0;
         mainModule.simulationSpace = ParticleSystemSimulationSpace.Local;
@@ -24,13 +23,11 @@ public class Estrellas : MonoBehaviour
         var shapeModule = StarEmiter.shape;
         shapeModule.shapeType = StarFieldShape;
 
-       
         mainModule.maxParticles = MaxStars;
         var shape = StarEmiter.shape;
         shape.radius = FieldRadius;
         mainModule.startSize = new ParticleSystem.MinMaxCurve(MinimumStarSize, MaximumStarSize);
 
-        
         StarEmiter.Emit(MaxStars);
     }
 

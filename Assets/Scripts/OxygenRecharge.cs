@@ -5,31 +5,59 @@ using UnityEngine.UI;
 
 public class OxygenRecharge : MonoBehaviour
 {
-    [SerializeField] Text TextMensajes;
-    public OxygenCountDown remainingTime;
-
+    public OxygenCountDown OxygenRemainingTime;
     private bool inRechargeRange;
     [SerializeField] GameObject Player;
+    [SerializeField] GameObject ImageBotonE;
+    [SerializeField] GameObject TextMensajesObject;
+    [SerializeField] GameObject CylinderOxigeno;
+    private Renderer CylinderOxigenoRenderer;
+    [SerializeField] Text TextMensajesText;
     [SerializeField] float rechargeRadius = 3f;
+    [SerializeField] AudioSource rechargeOxygenAudioSource;
+    private bool usado = false;
     // Update is called once per frame
+    void Start()
+    {
+        CylinderOxigenoRenderer = CylinderOxigeno.GetComponent<Renderer>();
+    }
     void Update()
     {
         inRechargeRange = Vector3.Distance(transform.position, Player.transform.position) < rechargeRadius;
-        if (inRechargeRange && Input.GetKeyDown(KeyCode.E))
+        if(inRechargeRange && !usado)
         {
-            remainingTime.totalTime = 60;
-            TextMensajes.text = "60 segundos mas de oxigeno";
-            StartCoroutine("TimeToMessage");
-            TimeToMessage();
-            Destroy(gameObject,1);
+            ImageBotonE.SetActive(true);
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                usado=true;
+                OxigenoUsado();
+            }
         }
+        else
+        {
+            ImageBotonE.SetActive(false);
+        }
+    }
+
+    void OxigenoUsado()
+    {
+        rechargeOxygenAudioSource.Play();
+        ImageBotonE.SetActive(false);
+        Color CilindroOxigenoColor = new Color(.5f,.1f,.1f,.5f);
+        CylinderOxigenoRenderer.material.SetColor("_Color",CilindroOxigenoColor);
+        OxygenRemainingTime.totalTime = 60;
+        TextMensajesText.text = "60 segundos mas de oxigeno";
+        TextMensajesObject.SetActive(true);
+        StartCoroutine("TimeToMessage");
+        // Destroy(gameObject,5);
     }
 
     IEnumerator TimeToMessage()
     {
         yield return new WaitForSeconds(3);
-        TextMensajes.text = "";
-        
+        TextMensajesText.text = "";
+        TextMensajesObject.SetActive(false);
+
     }
 
     void OnDrawGizmos()

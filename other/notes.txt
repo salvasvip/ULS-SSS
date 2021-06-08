@@ -2,3 +2,8 @@ puzzle para cerrar ventanas
 mostrar ventanas cerradas
 encerrar aliens
 victoria al completar todo
+
+
+
+alien traspasa puertas
+sonido de cuenta regresiva final

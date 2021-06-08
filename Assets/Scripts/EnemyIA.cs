@@ -12,9 +12,11 @@ public class EnemyIA : MonoBehaviour
     public LiveCharacter live;
     [SerializeField] int damagePlayer = 5;
     [SerializeField] GameObject Player;
+    [SerializeField] GameObject PanelBordeRojo;
     [SerializeField] float persecutionRadius = 5.0f;
     [SerializeField] float attackRadius = 2.0f;
     [SerializeField] Animator alien;
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -34,11 +36,14 @@ public class EnemyIA : MonoBehaviour
                 alien.SetBool("Ataca", true);
                 live.PlayerHealth(damagePlayer);
                 StartCoroutine("TImeToLive");
+                PanelBordeRojo.SetActive(true);
+
             }
             else
             {
                 alien.SetBool("Camina", true);
                 alien.SetBool("Ataca", false);
+                PanelBordeRojo.SetActive(false);
             }
         }
         else
