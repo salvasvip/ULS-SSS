@@ -8,30 +8,40 @@ public class OxygenRecharge : MonoBehaviour
     public OxygenCountDown OxygenRemainingTime;
     [SerializeField] GameObject Player;
     [SerializeField] GameObject ImageBotonE;
-    [SerializeField] GameObject TextMensajesObject;
     [SerializeField] GameObject CylinderOxigeno;
-    private Renderer CylinderOxigenoRenderer;
-    [SerializeField] Text TextMensajesText;
     [SerializeField] AudioSource rechargeOxygenAudioSource;
+    [SerializeField] Text TextMensajesText;
+    private Renderer CylinderOxigenoRenderer;
     private bool usado = false;
+    private bool inRange = false;
     
     void Start()
     {
         CylinderOxigenoRenderer = CylinderOxigeno.GetComponent<Renderer>();
     }
-        void OnTriggerStay(Collider other) {
-            if(!usado)
+
+    void Update()
+    {
+        if(!usado && inRange)
+        {
+            ImageBotonE.SetActive(true);
+            if(Input.GetKeyDown(KeyCode.E))
             {
-                ImageBotonE.SetActive(true);
-                if(Input.GetKeyDown(KeyCode.E))
-                {
-                    OxigenoUsado();
-                    }
+                OxigenoUsado();
             }
         }
-        void OnTriggerExit(Collider other) {
-            ImageBotonE.SetActive(false);
-        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        inRange = true;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        inRange = false;
+        ImageBotonE.SetActive(false);
+    }
 
     void OxigenoUsado()
     {
@@ -42,15 +52,13 @@ public class OxygenRecharge : MonoBehaviour
         CylinderOxigenoRenderer.material.SetColor("_Color",CilindroOxigenoColor);
         OxygenRemainingTime.totalTime = 60;
         TextMensajesText.text = "tanque de oxigeno recargado";
-        TextMensajesObject.SetActive(true);
-        StartCoroutine("TimeToMessage");
+        StartCoroutine(TimeToMessage());
     }
 
     IEnumerator TimeToMessage()
     {
         yield return new WaitForSeconds(3);
         TextMensajesText.text = "";
-        TextMensajesObject.SetActive(false);
     }
 
 }

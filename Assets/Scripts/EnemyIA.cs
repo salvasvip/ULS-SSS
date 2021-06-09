@@ -23,12 +23,12 @@ public class EnemyIA : MonoBehaviour
     private void Update()
     {
         inPersecutionRange = Vector3.Distance(transform.position, Player.transform.position) < persecutionRadius;
+        inAttackRange = Vector3.Distance(transform.position, Player.transform.position) < attackRadius;
         if (inPersecutionRange)
         {
             agent.SetDestination(Player.transform.position);
             alien.SetBool("Espera", false);
             alien.SetBool("Camina", true);
-            inAttackRange = Vector3.Distance(transform.position, Player.transform.position) < attackRadius;
             if (inAttackRange)
             {
                 alien.SetBool("Camina", false);
