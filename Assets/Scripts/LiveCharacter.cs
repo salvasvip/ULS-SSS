@@ -7,10 +7,11 @@ using UnityEngine.UI;
 
 public class LiveCharacter : MonoBehaviour
 {
-    public int playerHealth = 10;
+    public int playerHealth = 100;
 
-    [SerializeField] int live = 3;
+    [SerializeField] int live = 100;
     [SerializeField] Text mensajeVida;
+    [SerializeField] GameObject PanelBordeRojo;
 
     void Start()
     {
@@ -25,7 +26,9 @@ public class LiveCharacter : MonoBehaviour
             {
                 mensajeVida.text = (live - 1).ToString();
                 live -= 1;
-                playerHealth = 10;
+                playerHealth = 100;
+                PanelBordeRojo.SetActive(true);
+                StartCoroutine("safe");
             }
             else
             {
@@ -36,5 +39,10 @@ public class LiveCharacter : MonoBehaviour
         {
             SceneManager.LoadScene(5);
         }
+    }
+    IEnumerator safe()
+    {
+        yield return new WaitForSeconds(1);
+        PanelBordeRojo.SetActive(false);
     }
 }

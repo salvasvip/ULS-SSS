@@ -6,7 +6,7 @@ using UnityEngine.Video;
 
 public class Splash : MonoBehaviour
 {
-    public float waitTime = 6f;
+    public float waitTime = 7f;
     public VideoPlayer _videoPlayer = null; //your videoplayer component
 
     void Start()

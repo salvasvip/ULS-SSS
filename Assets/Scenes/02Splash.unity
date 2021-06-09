@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a27a6c743e68d246be5bf0821000621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 6
+  waitTime: 7
   _videoPlayer: {fileID: 724686779}
 --- !u!1 &724686778
 GameObject:

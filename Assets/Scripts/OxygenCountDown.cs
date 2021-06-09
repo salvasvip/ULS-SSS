@@ -14,12 +14,6 @@ public class OxygenCountDown : MonoBehaviour
 
     private float seconds;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -28,7 +22,7 @@ public class OxygenCountDown : MonoBehaviour
         TextOxigeno.text = seconds.ToString();
         if (totalTime<=0)
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(5);
         }
     }
 }
