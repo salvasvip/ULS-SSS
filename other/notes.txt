@@ -8,4 +8,5 @@ adornar paredes y piso
 
 ***OPCIONALES***
 modificar el estilo de caminado para simular saltos sin gravedad
-
+menu de controles
+menu de mejores tiempos logrados (nick mas tiempo)
