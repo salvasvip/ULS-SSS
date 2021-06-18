@@ -7,6 +7,7 @@ public class OpenCloseDoors : MonoBehaviour
 {
     [SerializeField] Animator AnimatorPuerta;
     [SerializeField] GameObject ImageBotonE;
+    [SerializeField] AudioSource AudioSourceOpenClose;
     public Text TextMensajesText;
     private bool inRange;
     private bool puertaCerrada = false;
@@ -32,11 +33,13 @@ public class OpenCloseDoors : MonoBehaviour
         {
             puertasCerradas ++;
             TextMensajesText.text = "puerta cerrada";
+            AudioSourceOpenClose.Play();
         }
         else
         {
             puertasCerradas --;
             TextMensajesText.text = "puerta abierta";
+            AudioSourceOpenClose.Play();
         }
         StartCoroutine(TimeToMessage());
     }

@@ -6,21 +6,15 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public static bool gameIsPaused = false;
+    public static bool paused = false;
     public GameObject pauseMenuUI;
     private AudioSource[] allAudioSources;
 
     void Update()
     {
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (gameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            pressedP();
         }
     }
 
@@ -42,18 +36,36 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void Resume()
+    void pressedP()
     {
-        UnPauseAllAudio();
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        gameIsPaused = false;
+        if(paused)
+        {
+            UnPauseAllAudio();
+            pauseMenuUI.SetActive(false);
+            Time.timeScale = 1f;
+            paused = !paused;
+        }
+        else
+        {
+            paused = !paused;
+            PauseAllAudio();
+            pauseMenuUI.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
-    void Pause()
-    {
-        PauseAllAudio();
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        gameIsPaused = true;
-    }
+
+    // public void Resume()
+    // {
+    //     UnPauseAllAudio();
+    //     pauseMenuUI.SetActive(false);
+    //     Time.timeScale = 1f;
+    //     gameIsPaused = false;
+    // }
+    // void Pause()
+    // {
+    //     PauseAllAudio();
+    //     pauseMenuUI.SetActive(true);
+    //     Time.timeScale = 0f;
+    //     gameIsPaused = true;
+    // }
 }

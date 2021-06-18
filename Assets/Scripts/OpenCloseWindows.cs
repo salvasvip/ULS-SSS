@@ -9,25 +9,24 @@ public class OpenCloseWindows : MonoBehaviour
     [SerializeField] Animator AnimatorVentana2;
     [SerializeField] Animator AnimatorVentana3;
     [SerializeField] Animator AnimatorVentana4;
-    [SerializeField] GameObject ImageBotonE;
+    [SerializeField] GameObject GameObjectCodigo;
+    [SerializeField] InputField InputFieldCodigo;
     [SerializeField] Text TextMensajesText;
+    [SerializeField] AudioSource AudioSourceCloseWindow;
     private bool repared = false;
     private bool inRange = false;
     public Text TextReparaciones;
     public static int ReparacionesCompletadas = 0;
+    public string codigo = "1234";
 
     void Update() {
         if(!repared && inRange)
         {
-            ImageBotonE.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E))
+            GameObjectCodigo.SetActive(true);
+            InputFieldCodigo.ActivateInputField();
+            TextMensajesText.text = "el codigo es igual al nombre del bloque y la suma de los cubos de sus pasillos";
+            if (Input.GetKeyDown(KeyCode.Return) && InputFieldCodigo.text == codigo)
             {
-                repared = true;
-                ImageBotonE.SetActive(false);
-                AnimatorVentana1.SetBool("Cerrar", true);
-                AnimatorVentana2.SetBool("Cerrar", true);
-                AnimatorVentana3.SetBool("Cerrar", true);
-                AnimatorVentana4.SetBool("Cerrar", true);
                 Reparacion();
             }
         }
@@ -39,12 +38,23 @@ public class OpenCloseWindows : MonoBehaviour
     }
 
     void OnTriggerExit(Collider other) {
+        InputFieldCodigo.text = "";
+        TextMensajesText.text = "";
+        GameObjectCodigo.SetActive(false);
         inRange = false;
-        ImageBotonE.SetActive(false);
     }
     
     public void Reparacion()
     {
+        AudioSourceCloseWindow.Play();
+        InputFieldCodigo.text = "";
+        TextMensajesText.text = "";
+        GameObjectCodigo.SetActive(false);
+        repared = true;
+        AnimatorVentana1.SetBool("Cerrar", true);
+        AnimatorVentana2.SetBool("Cerrar", true);
+        AnimatorVentana3.SetBool("Cerrar", true);
+        AnimatorVentana4.SetBool("Cerrar", true);
         ReparacionesCompletadas++;
         TextReparaciones.text = ReparacionesCompletadas.ToString() + "/3";
         TextMensajesText.text = "VENTANAS SELLADAS";

@@ -18,6 +18,6 @@ public class Splash : MonoBehaviour
     IEnumerator WaitForIntro()
     {
         yield return new WaitForSeconds(waitTime);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 }

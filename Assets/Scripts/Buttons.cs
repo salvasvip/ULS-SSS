@@ -16,10 +16,6 @@ public class Buttons : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-    public void Empezar()
-    {
-        SceneManager.LoadScene(1);
-    }
     public void Menu()
     {
         SceneManager.LoadScene(2);
