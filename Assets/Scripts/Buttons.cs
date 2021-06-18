@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
+    public string Url;
     void start()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -44,5 +45,9 @@ public class Buttons : MonoBehaviour
     public void Salir()
     {
         Application.Quit();
+    }
+    public void URL()
+    {
+        Application.OpenURL(Url);
     }
 }
